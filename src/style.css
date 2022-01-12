@@ -1,0 +1,52 @@
+.container {
+  margin: 0 auto;
+  width: 800px;
+  margin-top: 50px;
+}
+
+.search-city {
+  margin-bottom: 15px;
+}
+.weather-img {
+  margin: 10px auto;
+  width: 150px;
+}
+
+.current-weather {
+  line-height: 8px;
+}
+.add-info {
+  text-align: right;
+}
+
+.add-info p {
+  margin-bottom: 0px;
+}
+
+.next-five-day {
+  margin-top: 10px;
+  margin-bottom: 10pox;
+}
+.card {
+  padding-top: 20px;
+  text-align: center;
+  border: none;
+}
+
+.card-img-top {
+  width: 55px;
+  margin: 0 auto;
+}
+
+.degree {
+  font-size: 16px;
+  text-decoration: none;
+  position: relative;
+  top: -10px;
+  color: black;
+}
+.spacer {
+  font-size: 16px;
+  position: relative;
+  top: -10px;
+}
