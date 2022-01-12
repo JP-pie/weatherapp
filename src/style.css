@@ -50,3 +50,9 @@
   position: relative;
   top: -10px;
 }
+
+.open-source {
+  display: block;
+  margin-left: 252px;
+  margin-top: 10px;
+}
