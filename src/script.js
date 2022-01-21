@@ -23,9 +23,29 @@ function formateDate(timeStamp) {
 }
 let apiKey = "9e695cc5bacfa21c5921f78723caae18";
 
-function displayChanges(response) {
-  console.log(response);
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+  let days = ["Thur", "Fri", "Sat", "Sun", "Mon"];
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
 
+<div class="col-2">
+<div class = "forecast-day"> ${day} </div>
+  <img src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png" alt="cloudy icon">
+
+<div class="forest-temperature"><span class="forecast-max">23° </span>/<span class="forecast-min"> 12°</span> </div>
+`;
+
+    forecastHTML = forecastHTML + `</div>`;
+
+    forecastElement.innerHTML = forecastHTML;
+  });
+}
+
+function displayChanges(response) {
   celsiusTemp = response.data.main.temp;
   let newTemp = Math.round(celsiusTemp);
   let changeTemp = document.querySelector("#temperature");
@@ -108,3 +128,4 @@ fahrenhiet.addEventListener("click", handleFahrenhiet);
 
 let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", handleCelsius);
+displayForecast();
