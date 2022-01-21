@@ -1,12 +1,13 @@
 .container {
   margin: 0 auto;
-  width: 800px;
+  width: 700px;
   margin-top: 50px;
 }
 
 .search-city {
   margin-bottom: 15px;
 }
+
 .weather-img {
   margin: 10px auto;
   width: 150px;
@@ -44,6 +45,7 @@
   position: relative;
   top: -10px;
   color: black;
+  cursor: default;
 }
 .spacer {
   font-size: 16px;

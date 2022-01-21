@@ -25,7 +25,9 @@ let apiKey = "9e695cc5bacfa21c5921f78723caae18";
 
 function displayChanges(response) {
   console.log(response);
-  let newTemp = Math.round(response.data.main.temp);
+
+  celsiusTemp = response.data.main.temp;
+  let newTemp = Math.round(celsiusTemp);
   let changeTemp = document.querySelector("#temperature");
   changeTemp.innerHTML = `${newTemp}`;
 
@@ -87,3 +89,22 @@ function changeToCurrentLocation() {
 
 let currentLocation = document.querySelector("#current-location");
 currentLocation.addEventListener("click", changeToCurrentLocation);
+
+function handleFahrenhiet(event) {
+  event.preventDefault();
+  let changeTemp = document.querySelector("#temperature");
+  changeTemp.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
+}
+
+function handleCelsius(event) {
+  event.preventDefault;
+  let changeTemp = document.querySelector("#temperature");
+  changeTemp.innerHTML = Math.round(celsiusTemp);
+}
+let celsiusTemp = null;
+
+let fahrenhiet = document.querySelector("#fahrenhiet");
+fahrenhiet.addEventListener("click", handleFahrenhiet);
+
+let celsius = document.querySelector("#celsius");
+celsius.addEventListener("click", handleCelsius);
