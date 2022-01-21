@@ -1,28 +1,30 @@
-let date = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let currentDay = days[date.getDay()];
-let currentHour =
-  date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
-let currentMin =
-  date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+function formateDate(timeStamp) {
+  let date = new Date(timeStamp);
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let currentDay = days[date.getDay()];
+  let currentHour = date.getHours();
+  if (currentHour < 10) {
+    currentHour = `0${currentHour}`;
+  }
+  let currentMin = date.getMinutes();
+  if (currentMin < 10) {
+    currentMin = `0${currentMin}`;
+  }
 
-let currentTime = `${currentDay} ${currentHour}:${currentMin} `;
-
-let updatedTime = document.querySelector("#date-time");
-
-updatedTime.innerHTML = `${currentTime}`;
-
+  return `${currentDay} ${currentHour}:${currentMin} `;
+}
 let apiKey = "9e695cc5bacfa21c5921f78723caae18";
 
 function displayChanges(response) {
+  console.log(response);
   let newTemp = Math.round(response.data.main.temp);
   let changeTemp = document.querySelector("#temperature");
   changeTemp.innerHTML = `${newTemp}`;
@@ -44,6 +46,16 @@ function displayChanges(response) {
   let wind = Math.round(response.data.wind.speed * 3.6);
   let changeWind = document.querySelector("#wind");
   changeWind.innerHTML = `${wind}`;
+
+  let updatedTime = document.querySelector("#date-time");
+  updatedTime.innerHTML = formateDate(response.data.dt * 1000);
+
+  let icon = document.querySelector("#icon");
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", `${capDescription}`);
 }
 
 function search(city) {
@@ -57,42 +69,18 @@ function changeCity(event) {
   let city = inputCity.value;
   search(city);
 }
+
 let newCity = document.querySelector("#input-city-form");
 newCity.addEventListener("submit", changeCity);
 
 search("Sydney");
 
-function showPositionWeather(response) {
-  let location = response.data.name;
-  let temp = Math.round(response.data.main.temp);
-  let description = response.data.weather[0].description;
-  let capDescription =
-    description[0].toLocaleUpperCase() + description.slice(1);
-
-  let tempElement = document.querySelector("#temperature");
-  tempElement.innerHTML = `${temp}`;
-  let cityElement = document.querySelector("#show-city");
-  cityElement.innerHTML = `${location}`;
-  let descriptionElement = document.querySelector("#weather-description");
-  descriptionElement.innerHTML = `${capDescription}`;
-
-  let humidity = response.data.main.humidity;
-  let changeHumidity = document.querySelector("#humidity");
-  changeHumidity.innerHTML = `${humidity}`;
-
-  let wind = Math.round(response.data.wind.speed * 3.6);
-  let changeWind = document.querySelector("#wind");
-  changeWind.innerHTML = `${wind}`;
-}
 function changeToCurrentLocation() {
   function showPosition(position) {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
-    let apiKey = "9e695cc5bacfa21c5921f78723caae18";
-    console.log(lat);
-    console.log(lon);
     let geoUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&&units=metric`;
-    axios.get(geoUrl).then(showPositionWeather);
+    axios.get(geoUrl).then(displayChanges);
   }
   navigator.geolocation.getCurrentPosition(showPosition);
 }

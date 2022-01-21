@@ -14,13 +14,13 @@
       crossorigin="anonymous"
     />
     <link href="src/style.css" rel="stylesheet" />
-    <title>Document</title>
+    <title>Julie's Weather App</title>
   </head>
   <body>
     <div class="container" id="input-city-form"> <form>
       <div class="row search-city">
         <div class="col-6">
-        <input type="text" class="form-control shadow-sm" placeholder="Enter City" id="input-city-value" /></div>
+        <input type="text" class="form-control shadow-sm" placeholder="Enter City" id="input-city-value" autocomplete="off"/></div>
   <div class="col-3">
         <input type="submit" class="form-control" value="Search" /></div>
         <div class="col-3"> 
@@ -31,11 +31,11 @@
         <div class="col-4 current-weather">
           <h1 id="show-city"></h1>
           <h2><span class = "temperature"id="temperature"></span><a href="#" id="celsius" class="degree">°C</a> <!--<span class="spacer">  | </span><a href="#" id="fahrenhiet" class="degree">°F</a> --> </h2>
-          <P id="date-time"></P>
+          <P>Last updated <span id="date-time"></span> </P>
           <p id="weather-description"></p>
         </div>
         <div class="col-4">
-          <img src="https://ssl.gstatic.com/onebox/weather/48/cloudy.png" class="weather-img" alt="cloudy icon">
+          <img src="" class="weather-img" alt="cloudy icon" id="icon">
         </div>
         <div class="col-4 add-info">
          
@@ -85,12 +85,12 @@
   </div>
 </div></div>
 </div>
-
-</div>
 <div class="open-source">
     <p>
 <a href="https://github.com/JP-pie/weatherapp" target="_blank">Open-source code
 </a>, by JP</p></div>
+</div>
+
     </div>
     <script src="src/script.js"></script>
   </body>
