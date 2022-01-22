@@ -31,9 +31,8 @@ function formatDay(timeStamp) {
   return days[day];
 }
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  console.log(apiURL);
+
   axios.get(apiURL).then(displayForecast);
 }
 
@@ -68,7 +67,7 @@ function displayForecast(response) {
 }
 
 function displayChanges(response) {
-  celsiusTemp = response.data.main.temp;
+  let celsiusTemp = response.data.main.temp;
   let newTemp = Math.round(celsiusTemp);
   let changeTemp = document.querySelector("#temperature");
   changeTemp.innerHTML = `${newTemp}`;
@@ -133,23 +132,3 @@ function changeToCurrentLocation() {
 
 let currentLocation = document.querySelector("#current-location");
 currentLocation.addEventListener("click", changeToCurrentLocation);
-
-function handleFahrenhiet(event) {
-  event.preventDefault();
-  let changeTemp = document.querySelector("#temperature");
-  changeTemp.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
-}
-
-function handleCelsius(event) {
-  event.preventDefault;
-  let changeTemp = document.querySelector("#temperature");
-  changeTemp.innerHTML = Math.round(celsiusTemp);
-}
-let celsiusTemp = null;
-
-let fahrenhiet = document.querySelector("#fahrenhiet");
-fahrenhiet.addEventListener("click", handleFahrenhiet);
-
-let celsius = document.querySelector("#celsius");
-celsius.addEventListener("click", handleCelsius);
-displayForecast();

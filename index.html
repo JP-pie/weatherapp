@@ -18,55 +18,56 @@
   </head>
   <body>
     <div class="container" id="input-city-form">
-      <form>
-        <div class="row search-city">
-          <div class="col-6">
-            <input
-              type="text"
-              class="form-control shadow-sm"
-              placeholder="Enter City"
-              id="input-city-value"
-              autocomplete="off"
-            />
+      <div class="border">
+        <form>
+          <div class="row search-city">
+            <div class="col-6">
+              <input
+                type="text"
+                class="form-control shadow-sm"
+                placeholder="Enter City"
+                id="input-city-value"
+                autocomplete="off"
+              />
+            </div>
+            <div class="col-3">
+              <input type="submit" class="form-control" value="Search" />
+            </div>
+            <div class="col-3">
+              <button class="form-control" id="current-location">
+                Current
+              </button>
+            </div>
           </div>
-          <div class="col-3">
-            <input type="submit" class="form-control" value="Search" />
+        </form>
+        <div class="row">
+          <div class="col-4 current-weather">
+            <h1 id="show-city"></h1>
+            <h2>
+              <span class="temperature" id="temperature"></span
+              ><span id="celsius" class="degree">°C </span>
+            </h2>
+            <p>Last updated <span id="date-time"></span></p>
+            <p id="weather-description"></p>
           </div>
-          <div class="col-3">
-            <button class="form-control" id="current-location">Current</button>
+          <div class="col-4">
+            <img src="" class="weather-img" alt="cloudy icon" id="icon" />
           </div>
-        </div>
-      </form>
-      <div class="row">
-        <div class="col-4 current-weather">
-          <h1 id="show-city"></h1>
-          <h2>
-            <span class="temperature" id="temperature"></span
-            ><a href="#" id="celsius" class="degree">°C</a>
-            <span class="spacer"> | </span
-            ><a href="#" id="fahrenhiet" class="degree">°F</a>
-          </h2>
-          <p>Last updated <span id="date-time"></span></p>
-          <p id="weather-description"></p>
-        </div>
-        <div class="col-4">
-          <img src="" class="weather-img" alt="cloudy icon" id="icon" />
-        </div>
-        <div class="col-4 add-info">
-          <p>Humidity:<span id="humidity"></span>%</p>
-          <p>Wind: <span id="wind"></span>km/h</p>
-        </div>
-        <h3>Forecast</h3>
+          <div class="col-4 add-info">
+            <p>Humidity:<span id="humidity"></span>%</p>
+            <p>Wind: <span id="wind"></span>km/h</p>
+          </div>
+          <h3>Forecast</h3>
 
-        <div class="forecast" id="weather-forecast"></div>
-
-        <div class="open-source">
-          <p>
-            <a href="https://github.com/JP-pie/weatherapp" target="_blank"
-              >Open-source code </a
-            >, by JP
-          </p>
+          <div class="forecast" id="weather-forecast"></div>
         </div>
+      </div>
+      <div class="open-source">
+        <p>
+          <a href="https://github.com/JP-pie/weatherapp" target="_blank"
+            >Open-source code </a
+          >, by JP
+        </p>
       </div>
     </div>
     <script src="src/script.js"></script>
